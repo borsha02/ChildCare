@@ -22,8 +22,8 @@
                 </div>
 
                 {{-- Content (pushed down below navbar) --}}
-                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-30 text-center space-y-6 sm:space-y-8 mt-[5.5rem]">
-                    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-semibold text-white leading-tight drop-shadow-lg">
+                <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-15 text-center space-y-6 sm:space-y-8 mt-[5.5rem]">
+                    <h1 class="text-2xl sm:text-3xl lg:text-5xl font-semibold text-white leading-tight drop-shadow-lg">
                         Excellence in Early<br />Childhood Development
                     </h1>
 

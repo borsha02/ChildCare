@@ -28,17 +28,17 @@
 
             {{-- Desktop Menu --}}
             <div class="hidden lg:flex items-center gap-10">
-                <a href="{{ url('/') }}" class="text-sm font-bold text-gray-700 hover:text-teal-600 transition-colors">Home</a>
-                <a href="{{ url('/aboutus') }}" class="text-sm font-bold text-gray-700 hover:text-teal-600 transition-colors">About</a>
-                <a href="{{ url('/programs') }}" class="text-sm font-bold text-gray-700 hover:text-teal-600 transition-colors">Programs</a>
-                <a href="{{ url('/activities') }}" class="text-sm font-bold text-gray-700 hover:text-teal-600 transition-colors">Activities</a>
-                <a href="{{ url('/contact') }}" class="text-sm font-bold text-gray-700 hover:text-teal-600 transition-colors">Contact</a>
+                <a href="{{ url('/') }}" class="text-lg font-bold text-gray-700 hover:text-teal-600 transition-colors">Home</a>
+                <a href="{{ url('/aboutus') }}" class="text-lg font-bold text-gray-700 hover:text-teal-600 transition-colors">About</a>
+                <a href="{{ url('/programs') }}" class="text-lg font-bold text-gray-700 hover:text-teal-600 transition-colors">Programs</a>
+                <a href="{{ url('/activities') }}" class="text-lg font-bold text-gray-700 hover:text-teal-600 transition-colors">Activities</a>
+                <a href="{{ url('/contact') }}" class="text-lg font-bold text-gray-700 hover:text-teal-600 transition-colors">Contact</a>
             </div>
 
             {{-- Buttons --}}
             <div class="flex items-center gap-3">
                 <a href="{{ url('/login') }}">
-                    <button class="hidden lg:block text-sm font-bold text-gray-700 hover:text-teal-600 px-5 py-1.5">
+                    <button class="hidden lg:block text-lg font-bold text-gray-700 hover:text-teal-600 px-5 py-1.5">
                         Login
                     </button>
                 </a>
