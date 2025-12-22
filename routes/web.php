@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ParentController;
 
 
 // Public pages
@@ -50,16 +51,30 @@ Route::prefix('caregiver')->group(function () {
     Route::get('/leave-requests', fn() => view('caregiver.leave-requests'))->name('caregiver.leave');
 });
 
+// Parent module Route::middleware('auth')
 // Parent module
-Route::prefix('parent')->group(function () {
-    Route::get('/dashboard', fn() => view('parent.dashboard'))->name('parent.dashboard');
-    Route::get('/child-profile', fn() => view('parent.child-profile'))->name('parent.child');
-    Route::get('/reports', fn() => view('parent.reports'))->name('parent.reports');
-    Route::get('/attendance', fn() => view('parent.attendance'))->name('parent.attendance');
-    Route::get('/invoices', fn() => view('parent.invoices'))->name('parent.invoices');
-    Route::get('/health', fn() => view('parent.health'))->name('parent.health');
-    Route::get('/messages', fn() => view('parent.messages'))->name('parent.messages');
-    Route::get('/notifications', fn() => view('parent.notifications'))->name('parent.notifications');
-    Route::get('/events', fn() => view('parent.events'))->name('parent.events');
+    Route::prefix('parent')->group(function () {
+    Route::get('/dashboard', [ParentController::class, 'dashboard'])->name('parent.dashboard');
+    Route::get('/child-profile', [ParentController::class, 'childProfile'])->name('parent.child-profile');
+    Route::get('/reports', [ParentController::class, 'reports'])->name('parent.reports');
+    Route::get('/attendance', [ParentController::class, 'attendance'])->name('parent.attendance');
+    Route::get('/invoices', [ParentController::class, 'invoices'])->name('parent.invoice');
+    Route::get('/health', [ParentController::class, 'health'])->name('parent.health');
+    Route::get('/messages', [ParentController::class, 'messages'])->name('parent.messages');
+    Route::get('/notifications', [ParentController::class, 'notifications'])->name('parent.notifications');
+    Route::get('/events', [ParentController::class, 'events'])->name('parent.events');
+    Route::get('/settings', [ParentController::class, 'settings'])->name('parent.settings');
 });
 
+// Debug Route
+Route::get('/debug-auth', function () {
+    return response()->json([
+        'is_logged_in' => auth()->check(),
+        'user' => auth()->user(),
+        'session_id' => session()->getId(),
+        'session_driver' => config('session.driver'),
+        'session_lifetime' => config('session.lifetime'),
+        'session_secure' => config('session.secure'),
+        'session_domain' => config('session.domain'),
+    ]);
+});

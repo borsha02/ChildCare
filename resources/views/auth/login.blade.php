@@ -36,6 +36,13 @@
                 <p class="text-gray-500 mt-1">Sign in to Little Stars</p>
             </div>
 
+            {{-- Success Message --}}
+            @if (session('success'))
+                <div class="mb-4 text-teal-600 bg-teal-50 p-3 rounded-xl text-center text-sm border border-teal-100">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             {{-- Error --}}
             @if ($errors->any())
                 <div class="mb-4 text-red-500 text-sm">

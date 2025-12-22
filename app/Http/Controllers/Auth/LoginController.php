@@ -22,8 +22,9 @@ class LoginController extends Controller
 
         // Attempt to log the user in
         if (auth()->attempt($request->only('email', 'password'))) {
-            // Authentication passed, redirect to intended location
-            return redirect()->intended(route('home'));
+            // Authentication passed, redirect to parent dashboard
+             $request->session()->regenerate(); // important!
+            return redirect()->route('parent.dashboard');
         }
 
         // Authentication failed, redirect back with input and error message
@@ -32,12 +33,12 @@ class LoginController extends Controller
             ->withErrors(['email' => 'These credentials do not match our records.']);
         }
 
-        public function logout(Request $request)
-        {
-            auth()->logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-                return redirect()->route('home');
-            }
+        return redirect()->route('home');
+    }
 }

@@ -15,18 +15,18 @@ class home extends Controller
         // যদি file থাকে: resources/views/about.blade.php
     }
 
-   public function index()
+   public function programs()
     {
         return view('programs');
     }
 
-   public function index()
+   public function  activities()
     {
         return view('activities');
     }
 
 
-     public function index()
+     public function contact()
     {
         return view('contact');
     }
