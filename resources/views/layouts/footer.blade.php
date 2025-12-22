@@ -21,7 +21,7 @@
             </div>
 
             {{-- Navigation Menu --}}
-            <div class="flex flex-wrap justify-center gap-6 text-sm">
+            <div class="flex flex-wrap justify-center gap-6 text-lg">
                 <a href="{{ url('/') }}" class="hover:text-teal-400 transition">Home</a>
                 <a href="{{ url('/about') }}" class="hover:text-teal-400 transition">About</a>
                 <a href="{{ url('/programs') }}" class="hover:text-teal-400 transition">Programs</a>
@@ -71,7 +71,7 @@
         </div>
 
         {{-- Bottom Section --}}
-        <div class="pt-8 text-sm text-gray-400">
+        <div class="pt-8 text-lg text-gray-400">
             <div class="max-w-7xl mx-auto flex justify-between items-center">
 
                 <div class="w-1/3 text-left space-y-1">
