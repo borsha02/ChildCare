@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Childcare Management</title>
+    <title>Events & Activities - Childcare Management</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    @vite(['resources/css/events.css'])
+    @vite(['resources/css/caregiver/events.css'])
 </head>
 <body>
     <div class="dashboard-container">
@@ -17,10 +17,10 @@
                     <h2>Childcare</h2>
                 </div>
                 <div class="user-info">
-                    <div class="user-avatar">JD</div>
+                    <div class="user-avatar">SC</div>
                     <div class="user-details">
-                        <h4>John Doe</h4>
-                        <p>Parent Account</p>
+                        <h4>Sarah Connor</h4>
+                        <p>Caregiver</p>
                     </div>
                 </div>
             </div>
@@ -28,63 +28,54 @@
             <nav class="nav-menu">
                 <div class="nav-section">
                     <div class="nav-section-title">Main Menu</div>
-                    <a href="{{ route('parent.dashboard') }}" class="nav-item">
+                    <a href="{{ route('caregiver.dashboard') }}" class="nav-item">
                         <i class="fas fa-home"></i>
                         <span>Dashboard</span>
                     </a>
-                    <a href="{{ route('parent.child-profile') }}" class="nav-item">
-                        <i class="fas fa-child"></i>
-                        <span>Child Profile</span>
+                    <a href="{{ route('caregiver.assigned') }}" class="nav-item">
+                        <i class="fas fa-users"></i>
+                        <span>Assigned Children</span>
                     </a>
-                    <a href="{{ route('parent.attendance') }}" class="nav-item">
+                    <a href="{{ route('caregiver.schedule') }}" class="nav-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>My Schedule</span>
+                    </a>
+                    <a href="{{ route('caregiver.attendance') }}" class="nav-item">
                         <i class="fas fa-calendar-check"></i>
                         <span>Attendance</span>
                     </a>
-                    <a href="{{ route('parent.reports') }}" class="nav-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Reports</span>
-                    </a>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-section-title">Communication</div>
-                    <a href="{{ route('parent.messages') }}" class="nav-item">
-                        <i class="fas fa-comments"></i>
-                        <span>Messages</span>
-                        <span class="badge">3</span>
+                    <div class="nav-section-title">Activities</div>
+                    <a href="{{ route('caregiver.reports') }}" class="nav-item">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Daily Reports</span>
                     </a>
-                    <a href="{{ route('parent.notifications') }}" class="nav-item">
-                        <i class="fas fa-bell"></i>
-                        <span>Notifications</span>
-                        <span class="badge">5</span>
-                    </a>
-                    <a href="{{ route('parent.events') }}" class="nav-item active">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Events</span>
-                    </a>
-                </div>
-
-                <div class="nav-section">
-                    <div class="nav-section-title">Services</div>
-                    <a href="{{ route('parent.health') }}" class="nav-item">
+                    <a href="{{ route('caregiver.health') }}" class="nav-item">
                         <i class="fas fa-heartbeat"></i>
                         <span>Health Records</span>
                     </a>
-                    <a href="{{ route('parent.invoice') }}" class="nav-item">
-                        <i class="fas fa-file-invoice-dollar"></i>
-                        <span>Billing & Invoices</span>
+                    <a href="{{ route('caregiver.events') }}" class="nav-item active">
+                        <i class="fas fa-calendar-days"></i>
+                        <span>Events</span>
+                    </a>
+                    <a href="{{ route('caregiver.messages') }}" class="nav-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Messages</span>
+                        <span class="badge">4</span>
+                    </a>
+                    <a href="{{ route('caregiver.notifications') }}" class="nav-item active">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
                     </a>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-section-title">Account</div>
-                    <a href="{{ route('parent.settings') }}" class="nav-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
-                    </a>
-                    <a href="{{ route('parent.help') }}" class="nav-item">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Help & Support</span>
+                    <div class="nav-section-title">Personal</div>
+                    <a href="{{ route('caregiver.leave') }}" class="nav-item">
+                        <i class="fas fa-calendar-times"></i>
+                        <span>Leave Requests</span>
                     </a>
                     <a href="{{ route('logout') }}" class="nav-item"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -110,13 +101,13 @@
                         <input type="text" placeholder="Search events...">
                         <i class="fas fa-search"></i>
                     </div>
-                    <button class="icon-btn">
+                    <a href="{{ route('caregiver.notifications') }}" class="icon-btn {{ request()->routeIs('caregiver.notifications') ? 'active' : '' }}">
                         <i class="fas fa-bell"></i>
                         <span class="notification-dot"></span>
-                    </button>
-                    <button class="icon-btn">
+                    </a>
+                    <a href="{{ route('caregiver.messages') }}" class="icon-btn {{ request()->routeIs('caregiver.messages') ? 'active' : '' }}">
                         <i class="fas fa-envelope"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -127,8 +118,8 @@
                         <div class="filter-tabs">
                             <button class="filter-tab active" data-filter="all">All Events</button>
                             <button class="filter-tab" data-filter="upcoming">Upcoming</button>
+                            <button class="filter-tab" data-filter="my-events">My Events</button>
                             <button class="filter-tab" data-filter="past">Past Events</button>
-                            <button class="filter-tab" data-filter="registered">My Registrations</button>
                         </div>
                         <div class="filter-actions">
                             <select class="filter-select">
@@ -136,8 +127,12 @@
                                 <option value="educational">Educational</option>
                                 <option value="sports">Sports & Recreation</option>
                                 <option value="cultural">Cultural</option>
+                                <option value="training">Staff Training</option>
                                 <option value="social">Social Events</option>
                             </select>
+                            <button class="create-event-btn">
+                                <i class="fas fa-plus"></i> Create Event
+                            </button>
                         </div>
                     </div>
 
@@ -171,28 +166,34 @@
                                     <p class="featured-location">
                                         <i class="fas fa-map-marker-alt"></i> Main Hall
                                     </p>
-                                    <button class="register-btn registered">
-                                        <i class="fas fa-check-circle"></i> Registered
+                                    <div class="featured-role">
+                                        <i class="fas fa-user-tag"></i> Role: Event Coordinator
+                                    </div>
+                                    <button class="register-btn assigned">
+                                        <i class="fas fa-check-circle"></i> Assigned
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="featured-card newyear">
+                            <div class="featured-card training">
                                 <div class="featured-badge">Next Week</div>
                                 <div class="featured-icon">
-                                    <i class="fas fa-champagne-glasses"></i>
+                                    <i class="fas fa-chalkboard-teacher"></i>
                                 </div>
                                 <div class="featured-content">
-                                    <h3>New Year Celebration</h3>
+                                    <h3>First Aid Training</h3>
                                     <p class="featured-date">
-                                        <i class="fas fa-calendar"></i> January 1, 2026
+                                        <i class="fas fa-calendar"></i> January 3, 2026
                                     </p>
                                     <p class="featured-time">
-                                        <i class="fas fa-clock"></i> 11:00 AM - 1:00 PM
+                                        <i class="fas fa-clock"></i> 9:00 AM - 12:00 PM
                                     </p>
                                     <p class="featured-location">
-                                        <i class="fas fa-map-marker-alt"></i> Main Hall
+                                        <i class="fas fa-map-marker-alt"></i> Training Room
                                     </p>
+                                    <div class="featured-role">
+                                        <i class="fas fa-user-tag"></i> Mandatory Attendance
+                                    </div>
                                     <button class="register-btn">
                                         <i class="fas fa-plus-circle"></i> Register Now
                                     </button>
@@ -217,7 +218,7 @@
                                     <span class="event-category educational">Educational</span>
                                 </div>
                                 <p class="event-description">
-                                    Join us for an important discussion about your child's progress and development. Individual sessions will be scheduled.
+                                    Individual sessions with parents to discuss children's progress and development. Prepare reports for your assigned children.
                                 </p>
                                 <div class="event-details">
                                     <span class="event-detail">
@@ -227,13 +228,16 @@
                                         <i class="fas fa-map-marker-alt"></i> Conference Room
                                     </span>
                                     <span class="event-detail">
-                                        <i class="fas fa-users"></i> 25 Attendees
+                                        <i class="fas fa-users"></i> 12 Children
                                     </span>
+                                </div>
+                                <div class="event-role-tag">
+                                    <i class="fas fa-user-tag"></i> Your Role: Lead Presenter
                                 </div>
                             </div>
                             <div class="event-actions">
                                 <button class="action-btn primary">
-                                    <i class="fas fa-calendar-plus"></i> Register
+                                    <i class="fas fa-clipboard-check"></i> View Schedule
                                 </button>
                                 <button class="action-btn secondary">
                                     <i class="fas fa-info-circle"></i> Details
@@ -253,7 +257,7 @@
                                     <span class="event-category sports">Sports</span>
                                 </div>
                                 <p class="event-description">
-                                    A fun-filled day of outdoor activities and games for children. Parents are welcome to join and cheer!
+                                    Organize and supervise outdoor activities and games for children. Ensure safety protocols are followed.
                                 </p>
                                 <div class="event-details">
                                     <span class="event-detail">
@@ -263,13 +267,16 @@
                                         <i class="fas fa-map-marker-alt"></i> Sports Ground
                                     </span>
                                     <span class="event-detail">
-                                        <i class="fas fa-users"></i> 50 Attendees
+                                        <i class="fas fa-users"></i> 50 Children
                                     </span>
+                                </div>
+                                <div class="event-role-tag">
+                                    <i class="fas fa-user-tag"></i> Your Role: Activity Supervisor
                                 </div>
                             </div>
                             <div class="event-actions">
                                 <button class="action-btn primary">
-                                    <i class="fas fa-calendar-plus"></i> Register
+                                    <i class="fas fa-calendar-plus"></i> Confirm Attendance
                                 </button>
                                 <button class="action-btn secondary">
                                     <i class="fas fa-info-circle"></i> Details
@@ -289,7 +296,7 @@
                                     <span class="event-category cultural">Cultural</span>
                                 </div>
                                 <p class="event-description">
-                                    Showcase of children's artwork from the past semester. Come celebrate your child's creativity!
+                                    Help set up and manage the showcase of children's artwork. Assist parents and guide them through the exhibition.
                                 </p>
                                 <div class="event-details">
                                     <span class="event-detail">
@@ -302,10 +309,13 @@
                                         <i class="fas fa-users"></i> 100 Attendees
                                     </span>
                                 </div>
+                                <div class="event-role-tag">
+                                    <i class="fas fa-user-tag"></i> Your Role: Exhibition Guide
+                                </div>
                             </div>
                             <div class="event-actions">
                                 <button class="action-btn primary">
-                                    <i class="fas fa-calendar-plus"></i> Register
+                                    <i class="fas fa-calendar-plus"></i> Volunteer
                                 </button>
                                 <button class="action-btn secondary">
                                     <i class="fas fa-info-circle"></i> Details
@@ -314,6 +324,45 @@
                         </div>
 
                         <!-- Event Card 4 -->
+                        <div class="event-card">
+                            <div class="event-date-badge">
+                                <div class="date-day">15</div>
+                                <div class="date-month">JAN</div>
+                            </div>
+                            <div class="event-content">
+                                <div class="event-header">
+                                    <h3>CPR & Safety Workshop</h3>
+                                    <span class="event-category training">Training</span>
+                                </div>
+                                <p class="event-description">
+                                    Mandatory training session for all caregivers. Renew CPR certification and learn updated safety protocols.
+                                </p>
+                                <div class="event-details">
+                                    <span class="event-detail">
+                                        <i class="fas fa-clock"></i> 1:00 PM - 4:00 PM
+                                    </span>
+                                    <span class="event-detail">
+                                        <i class="fas fa-map-marker-alt"></i> Training Center
+                                    </span>
+                                    <span class="event-detail">
+                                        <i class="fas fa-users"></i> 15 Staff
+                                    </span>
+                                </div>
+                                <div class="event-role-tag mandatory">
+                                    <i class="fas fa-exclamation-circle"></i> Mandatory Attendance
+                                </div>
+                            </div>
+                            <div class="event-actions">
+                                <button class="action-btn primary">
+                                    <i class="fas fa-calendar-check"></i> Confirm
+                                </button>
+                                <button class="action-btn secondary">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Event Card 5 -->
                         <div class="event-card">
                             <div class="event-date-badge">
                                 <div class="date-day">20</div>
@@ -325,7 +374,7 @@
                                     <span class="event-category social">Social</span>
                                 </div>
                                 <p class="event-description">
-                                    A relaxing day out with families. Bring your picnic baskets and enjoy games, music, and quality time together.
+                                    Organize games and activities for families. Ensure children's safety and facilitate family engagement activities.
                                 </p>
                                 <div class="event-details">
                                     <span class="event-detail">
@@ -335,13 +384,16 @@
                                         <i class="fas fa-map-marker-alt"></i> Central Park
                                     </span>
                                     <span class="event-detail">
-                                        <i class="fas fa-users"></i> 75 Attendees
+                                        <i class="fas fa-users"></i> 75 Families
                                     </span>
+                                </div>
+                                <div class="event-role-tag">
+                                    <i class="fas fa-user-tag"></i> Your Role: Activity Coordinator
                                 </div>
                             </div>
                             <div class="event-actions">
                                 <button class="action-btn primary">
-                                    <i class="fas fa-calendar-plus"></i> Register
+                                    <i class="fas fa-calendar-plus"></i> Sign Up
                                 </button>
                                 <button class="action-btn secondary">
                                     <i class="fas fa-info-circle"></i> Details
@@ -349,7 +401,7 @@
                             </div>
                         </div>
 
-                        <!-- Event Card 5 -->
+                        <!-- Event Card 6 - Past Event -->
                         <div class="event-card past">
                             <div class="event-date-badge">
                                 <div class="date-day">15</div>
@@ -361,7 +413,7 @@
                                     <span class="event-category cultural">Cultural</span>
                                 </div>
                                 <p class="event-description">
-                                    Children performed beautiful holiday songs and dances. Thank you to all who attended!
+                                    Successfully coordinated children's performances. Great job to all staff members who participated!
                                 </p>
                                 <div class="event-details">
                                     <span class="event-detail">
@@ -374,10 +426,16 @@
                                         <i class="fas fa-users"></i> 120 Attended
                                     </span>
                                 </div>
+                                <div class="event-role-tag completed">
+                                    <i class="fas fa-check-circle"></i> Completed
+                                </div>
                             </div>
                             <div class="event-actions">
                                 <button class="action-btn secondary">
                                     <i class="fas fa-images"></i> View Photos
+                                </button>
+                                <button class="action-btn secondary">
+                                    <i class="fas fa-file-alt"></i> Report
                                 </button>
                             </div>
                         </div>
@@ -411,9 +469,7 @@
         const sidebar = document.getElementById('sidebar');
 
         if (mobileToggle) {
-            mobileToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('active');
-            });
+            // Toggle handled by inline onclick
         }
 
         // Close sidebar when clicking outside on mobile

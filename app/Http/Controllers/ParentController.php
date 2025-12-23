@@ -55,4 +55,9 @@ class ParentController extends Controller
     {
         return view('parent.settings');
     }
+
+    public function help()
+    {
+        return view('parent.help');
+    }
 }

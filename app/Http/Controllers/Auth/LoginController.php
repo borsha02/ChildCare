@@ -22,9 +22,22 @@ class LoginController extends Controller
 
         // Attempt to log the user in
         if (auth()->attempt($request->only('email', 'password'))) {
-            // Authentication passed, redirect to parent dashboard
-             $request->session()->regenerate(); // important!
-            return redirect()->route('parent.dashboard');
+            // Authentication passed
+             $request->session()->regenerate();
+
+             $user = auth()->user();
+
+             // Check for roles if they exist
+             if (isset($user->role)) {
+                 if ($user->role === 'admin') {
+                     return redirect()->intended(route('admin.dashboard'));
+                 } elseif ($user->role === 'caregiver') {
+                     return redirect()->intended(route('caregiver.dashboard'));
+                 }
+             }
+
+            // Default to parent dashboard or intended page
+            return redirect()->intended(route('parent.dashboard'));
         }
 
         // Authentication failed, redirect back with input and error message

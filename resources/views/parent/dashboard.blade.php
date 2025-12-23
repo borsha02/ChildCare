@@ -84,7 +84,7 @@
                         <i class="fas fa-cog"></i>
                         <span>Settings</span>
                     </a>
-                    <a href="#" class="nav-item">
+                    <a href="{{ route('parent.help') }}" class="nav-item">
                         <i class="fas fa-question-circle"></i>
                         <span>Help & Support</span>
                     </a>

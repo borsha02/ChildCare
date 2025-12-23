@@ -26,8 +26,9 @@ class RegisterController extends Controller
         $user = \App\Models\User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
             'phone' => $request->phone,
+            'role' => 'parent',
         ]);
 
         // Redirect to login with success message

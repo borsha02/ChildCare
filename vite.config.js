@@ -5,7 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/css/parentdashboard.css', 'resources/css/childprofile.css', 'resources/css/attendance.css', 'resources/js/app.js'],
+            input: ['resources/css/app.css', 'resources/css/parentdashboard.css', 'resources/css/childprofile.css', 'resources/css/attendance.css', 'resources/css/help.css', 'resources/css/caregiver/dashboard.css',
+                'resources/css/caregiver/events.css',
+                'resources/css/caregiver/notifications.css', 'resources/js/app.js'],
             refresh: true,
         }),
         tailwindcss(),

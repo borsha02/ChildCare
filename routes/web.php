@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\CaregiverController;
 
 
 // Public pages
@@ -41,19 +42,22 @@ Route::prefix('admin')->group(function (){
 
 // Caregiver module
 Route::prefix('caregiver')->group(function () {
-    Route::get('/dashboard', fn() => view('caregiver.dashboard'))->name('caregiver.dashboard');
-    Route::get('/assigned-children', fn() => view('caregiver.assigned-children'))->name('caregiver.assigned');
-    Route::get('/attendance', fn() => view('caregiver.attendance'))->name('caregiver.attendance');
-    Route::get('/daily-reports', fn() => view('caregiver.daily-reports'))->name('caregiver.reports');
-    Route::get('/health-records', fn() => view('caregiver.health-records'))->name('caregiver.health');
-    Route::get('/messages', fn() => view('caregiver.messages'))->name('caregiver.messages');
-    Route::get('/schedule', fn() => view('caregiver.schedule'))->name('caregiver.schedule');
-    Route::get('/leave-requests', fn() => view('caregiver.leave-requests'))->name('caregiver.leave');
+    Route::get('/dashboard', [CaregiverController::class, 'dashboard'])->name('caregiver.dashboard');
+    Route::get('/assigned-children', [CaregiverController::class, 'assignedChildren'])->name('caregiver.assigned');
+    Route::get('/attendance', [CaregiverController::class, 'attendance'])->name('caregiver.attendance');
+    Route::get('/daily-reports', [CaregiverController::class, 'dailyReports'])->name('caregiver.reports');
+    Route::get('/health-records', [CaregiverController::class, 'healthRecords'])->name('caregiver.health');
+    Route::get('/messages', [CaregiverController::class, 'messages'])->name('caregiver.messages');
+    Route::get('/schedule', [CaregiverController::class, 'schedule'])->name('caregiver.schedule');
+    Route::get('/events', [CaregiverController::class, 'events'])->name('caregiver.events');
+    Route::get('/notifications', [CaregiverController::class, 'notifications'])->name('caregiver.notifications');
+    Route::get('/leave-requests', [CaregiverController::class, 'leaveRequests'])->name('caregiver.leave');
 });
+
 
 // Parent module Route::middleware('auth')
 // Parent module
-    Route::prefix('parent')->group(function () {
+Route::prefix('parent')->group(function (){
     Route::get('/dashboard', [ParentController::class, 'dashboard'])->name('parent.dashboard');
     Route::get('/child-profile', [ParentController::class, 'childProfile'])->name('parent.child-profile');
     Route::get('/reports', [ParentController::class, 'reports'])->name('parent.reports');
@@ -64,6 +68,7 @@ Route::prefix('caregiver')->group(function () {
     Route::get('/notifications', [ParentController::class, 'notifications'])->name('parent.notifications');
     Route::get('/events', [ParentController::class, 'events'])->name('parent.events');
     Route::get('/settings', [ParentController::class, 'settings'])->name('parent.settings');
+    Route::get('/help', [ParentController::class, 'help'])->name('parent.help');
 });
 
 // Debug Route
