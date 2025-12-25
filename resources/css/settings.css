@@ -386,6 +386,24 @@ body {
     color: white;
 }
 
+.profile-header-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header-info h3 {
+    font-size: 20px;
+    color: #1f2937;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.profile-header-info p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 2px;
+}
+
 /* Forms */
 .settings-form {
     display: flex;
@@ -692,3 +710,60 @@ body {
         text-align: center;
     }
 }
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-success i {
+    color: #10b981;
+}
+
+.toast-error i {
+    color: #ef4444;
+}
+
+.toast span {
+    font-weight: 500;
+    color: #1f2937;
+}
+/* Back to Dashboard Icon */
+.back-dashboard-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+}
+
+.back-dashboard-icon:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+    transform: translateX(-3px);
+}
+

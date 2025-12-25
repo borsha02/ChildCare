@@ -74,6 +74,10 @@
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Billing & Invoices</span>
                     </a>
+                    <a href="{{ route('parent.caregivers') }}" class="nav-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Assigned Caregivers</span>
+                    </a>
                 </div>
 
                 <div class="nav-section">
@@ -104,7 +108,12 @@
                 <button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('active')">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1>Health Records</h1>
+                <div style="display: flex; align-items: center;">
+                    <a href="{{ route('parent.dashboard') }}" class="back-dashboard-icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Health Records</h1>
+                </div>
                 <div class="top-bar-actions">
                     <div class="search-box">
                         <input type="text" placeholder="Search records...">

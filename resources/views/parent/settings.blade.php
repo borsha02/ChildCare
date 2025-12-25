@@ -74,6 +74,10 @@
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Billing & Invoices</span>
                     </a>
+                    <a href="{{ route('parent.caregivers') }}" class="nav-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Assigned Caregivers</span>
+                    </a>
                 </div>
 
                 <div class="nav-section">
@@ -104,7 +108,12 @@
                 <button class="mobile-toggle" onclick="document.getElementById('sidebar').classList.toggle('active')">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1>Settings</h1>
+                <div style="display: flex; align-items: center;">
+                    <a href="{{ route('parent.dashboard') }}" class="back-dashboard-icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1>Settings</h1>
+                </div>
                 <div class="top-bar-actions">
                     <div class="search-box">
                         <input type="text" placeholder="Search settings...">
@@ -157,9 +166,11 @@
                                 <div class="profile-section">
                                     <div class="profile-avatar-section">
                                         <div class="profile-avatar-large">JD</div>
-                                        <button class="change-avatar-btn">
-                                            <i class="fas fa-camera"></i> Change Photo
-                                        </button>
+                                        <div class="profile-header-info">
+                                            <h3>John Doe</h3>
+                                            <p>Parent Account</p>
+                                            <p>john.doe@example.com</p>
+                                        </div>
                                     </div>
                                     <form class="settings-form">
                                         <div class="form-row">
@@ -224,48 +235,7 @@
                                 </form>
                             </div>
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2><i class="fas fa-mobile-alt"></i> Two-Factor Authentication</h2>
-                                </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Enable Two-Factor Authentication</h4>
-                                        <p>Add an extra layer of security to your account</p>
-                                    </div>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox">
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                </div>
-                            </div>
 
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2><i class="fas fa-history"></i> Login History</h2>
-                                </div>
-                                <div class="login-history">
-                                    <div class="history-item">
-                                        <div class="history-icon">
-                                            <i class="fas fa-laptop"></i>
-                                        </div>
-                                        <div class="history-info">
-                                            <h4>Windows PC - Chrome</h4>
-                                            <p>New York, USA • Dec 22, 2025 at 11:30 PM</p>
-                                        </div>
-                                        <span class="current-badge">Current</span>
-                                    </div>
-                                    <div class="history-item">
-                                        <div class="history-icon">
-                                            <i class="fas fa-mobile-alt"></i>
-                                        </div>
-                                        <div class="history-info">
-                                            <h4>iPhone - Safari</h4>
-                                            <p>New York, USA • Dec 21, 2025 at 3:45 PM</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <!-- Notifications Tab -->
@@ -314,23 +284,7 @@
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
-                            </div>
-
-                            <div class="card">
-                                <div class="card-header">
-                                    <h2><i class="fas fa-mobile-alt"></i> Push Notifications</h2>
-                                </div>
-                                <div class="setting-item">
-                                    <div class="setting-info">
-                                        <h4>Enable Push Notifications</h4>
-                                        <p>Receive instant notifications on your device</p>
-                                    </div>
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                </div>
-                            </div>
+                            </div>                           
                         </div>
 
                         <!-- Privacy Tab -->
@@ -408,18 +362,16 @@
                                     <label>Language</label>
                                     <select class="form-input">
                                         <option>English (US)</option>
-                                        <option>Spanish</option>
-                                        <option>French</option>
-                                        <option>Chinese</option>
+                                        <option>Bangla</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Timezone</label>
                                     <select class="form-input">
-                                        <option>Eastern Time (ET)</option>
-                                        <option>Central Time (CT)</option>
-                                        <option>Mountain Time (MT)</option>
-                                        <option>Pacific Time (PT)</option>
+                                        <option>Bangladesh Standard Time (BST)</option>
+                                        <option>Indian Standard Time (IST)</option>
+                                        <option>Coordinated Universal Time (UTC)</option>
+                                        <option>Eastern Standard Time (EST)</option>
                                     </select>
                                 </div>
                                 <div class="form-actions">
@@ -476,6 +428,17 @@
                     btn.innerHTML = originalText;
                     showToast('Changes saved successfully!');
                 }, 1000);
+            });
+        });
+
+        // Handle cancel buttons
+        document.querySelectorAll('.btn-cancel').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const form = this.closest('form');
+                if (form) {
+                    form.reset();
+                    showToast('Changes discarded', 'info');
+                }
             });
         });
 

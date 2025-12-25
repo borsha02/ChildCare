@@ -249,6 +249,9 @@
             align-items: center;
             gap: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
         }
 
         .stat-card:hover {
@@ -283,6 +286,16 @@
 
         .stat-icon.purple {
             background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .stat-icon.pink {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+            color: white;
+        }
+
+        .stat-icon.cyan {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
             color: white;
         }
 

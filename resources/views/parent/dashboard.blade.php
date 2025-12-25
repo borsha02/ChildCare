@@ -76,6 +76,10 @@
                         <i class="fas fa-file-invoice-dollar"></i>
                         <span>Billing & Invoices</span>
                     </a>
+                    <a href="{{ route('parent.caregivers') }}" class="nav-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Assigned Caregivers</span>
+                    </a>
                 </div>
 
                 <div class="nav-section">
@@ -125,7 +129,7 @@
             <div class="content-area">
                 <!-- Stats Grid -->
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <a href="{{ route('parent.child-profile') }}" class="stat-card">
                         <div class="stat-icon blue">
                             <i class="fas fa-child"></i>
                         </div>
@@ -133,8 +137,8 @@
                             <h3>2</h3>
                             <p>Registered Children</p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </a>
+                    <a href="{{ route('parent.attendance') }}" class="stat-card">
                         <div class="stat-icon green">
                             <i class="fas fa-calendar-check"></i>
                         </div>
@@ -142,8 +146,8 @@
                             <h3>94%</h3>
                             <p>Attendance Rate</p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </a>
+                    <a href="{{ route('parent.invoice') }}" class="stat-card">
                         <div class="stat-icon orange">
                             <i class="fas fa-file-invoice"></i>
                         </div>
@@ -151,8 +155,8 @@
                             <h3>$450</h3>
                             <p>Pending Payment</p>
                         </div>
-                    </div>
-                    <div class="stat-card">
+                    </a>
+                    <a href="{{ route('parent.events') }}" class="stat-card">
                         <div class="stat-icon purple">
                             <i class="fas fa-calendar-day"></i>
                         </div>
@@ -160,7 +164,25 @@
                             <h3>3</h3>
                             <p>Upcoming Events</p>
                         </div>
-                    </div>
+                    </a>
+                    <a href="{{ route('parent.caregivers') }}" class="stat-card">
+                        <div class="stat-icon pink">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>2</h3>
+                            <p>Assigned Caregivers</p>
+                        </div>
+                    </a>
+                    <a href="{{ route('parent.health') }}" class="stat-card">
+                        <div class="stat-icon cyan">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>2</h3>
+                            <p>Health Records</p>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Content Grid -->

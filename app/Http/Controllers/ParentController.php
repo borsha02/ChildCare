@@ -60,4 +60,9 @@ class ParentController extends Controller
     {
         return view('parent.help');
     }
+
+    public function caregivers()
+    {
+        return view('parent.caregivers');
+    }
 }

@@ -124,6 +124,7 @@ Route::prefix('parent')->group(function (){
     Route::get('/events', [ParentController::class, 'events'])->name('parent.events');
     Route::get('/settings', [ParentController::class, 'settings'])->name('parent.settings');
     Route::get('/help', [ParentController::class, 'help'])->name('parent.help');
+    Route::get('/caregivers', [ParentController::class, 'caregivers'])->name('parent.caregivers');
 });
 
 // Debug Route
